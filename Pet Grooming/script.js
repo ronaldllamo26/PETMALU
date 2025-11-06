@@ -1,5 +1,3 @@
-// script.js - main frontend logic (site pages)
-
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
@@ -183,7 +181,6 @@ function showSummaryModal(data){
     localStorage.setItem('pg_appointments', JSON.stringify(appts));
     localStorage.setItem('pg_last_booking', JSON.stringify(booking));
 
-    // Show success before redirect
     backdrop.innerHTML = `
       <div class="modal" style="text-align:center;padding:30px">
         <h2 style="color:#28a745;margin-bottom:10px;">🎉 Booking Successful!</h2>
@@ -245,10 +242,21 @@ function attachBookingHandler(){
 
 // DOM Ready
 document.addEventListener('DOMContentLoaded', ()=>{
+  // Hamburger toggle
+  const hamburger = $('#hamburger');
+  if(hamburger){
+    hamburger.addEventListener('click', ()=>{
+      const nav = $('.nav-links');
+      if(nav) nav.classList.toggle('show');
+      hamburger.classList.toggle('active'); // animate to X
+    });
+  }
+
+  // Initialize existing functions
   seedServices();
   updateNavbar();
   protectBookingPage();
   populateServicesDropdown();
-  populateServicesList(); // ✅ Add this back to show services on services.html
+  populateServicesList();
   attachBookingHandler();
 });
