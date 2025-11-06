@@ -10,6 +10,9 @@
   --text: #222222;
   --radius: 12px;
   --shadow: 0 6px 18px rgba(15,23,42,0.06);
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
 }
 
 *{box-sizing:border-box}
@@ -22,106 +25,137 @@ a{color:inherit;text-decoration:none}
 .brand{display:flex;align-items:center;gap:12px}
 .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px}
 .nav-links{margin-left:auto;display:flex;gap:12px;align-items:center}
-.nav-links a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600}
+.nav-links a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600;transition:all 0.2s}
+.nav-links a:hover{color:var(--accent);background:rgba(102,191,191,0.08)}
 .nav-links a.active{color:var(--accent);background:rgba(102,191,191,0.08)}
+.nav-user{display:flex;align-items:center;gap:8px}
 
-/* Hero & Cards */
 .hero-card{background:var(--card);padding:28px;border-radius:14px;box-shadow:var(--shadow)}
 .hero h1{margin:0 0 10px;font-size:28px}
 .hero p{color:var(--muted);margin:0 0 18px}
-.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+
+/* Button */
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700;transition:all 0.2s;font-size:14px}
 .btn-primary{background:var(--accent);color:white}
+.btn-primary:hover{background:var(--accent-dark)}
 .btn-outline{background:transparent;border:1px solid #e6edf3;color:var(--text)}
+.btn-outline:hover{background:#f8f9fa}
+.btn-success{background:var(--success);color:white}
+.btn-danger{background:var(--danger);color:white}
+.btn-sm{padding:6px 12px;font-size:12px}
+
+/* Cards & grid */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
 @media (max-width:920px){.grid-3{grid-template-columns:1fr}}
-.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+.card{background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow)}
+
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:920px){.services-grid{grid-template-columns:1fr}}
-.service{padding:14px;border-radius:10px;border:1px solid #eef6f6}
+.service{padding:14px;border-radius:10px;border:1px solid #eef6f6;transition:all 0.2s}
+.service:hover{box-shadow:var(--shadow)}
 
 /* Form */
 .form-group{margin-bottom:12px}
-label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-input[type=text],input[type=email],select,input[type=date],input[type=time],textarea{
-  width:100%;padding:10px;border-radius:8px;border:1px solid #e8eef0;background:transparent;font-size:14px
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+input[type=text],input[type=email],input[type=tel],select,input[type=date],input[type=time],textarea{
+  width:100%;padding:10px;border-radius:8px;border:1px solid #e8eef0;background:white;font-size:14px;transition:border 0.2s;font-family:inherit
 }
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
 .row{display:flex;gap:12px}
 .row .col{flex:1}
 .small{font-size:13px;color:var(--muted)}
 
+/* Section Headers */
+.section-header{padding:12px 0 8px;border-bottom:2px solid #f1f5f6;margin-bottom:12px}
+
+/* Payment Options */
+.payment-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:8px}
+.payment-option{cursor:pointer;display:block}
+.payment-option input[type=radio]{display:none}
+.payment-card{border:2px solid #e8eef0;border-radius:10px;padding:16px;display:flex;align-items:center;gap:12px;transition:all 0.2s;background:white}
+.payment-card:hover{border-color:var(--accent);box-shadow:0 4px 12px rgba(102,191,191,0.1)}
+.payment-option input[type=radio]:checked + .payment-card{border-color:var(--accent);background:rgba(102,191,191,0.05);box-shadow:0 4px 12px rgba(102,191,191,0.15)}
+.payment-icon{font-size:32px;line-height:1}
+.payment-info{flex:1}
+.payment-title{font-weight:700;font-size:14px;margin-bottom:2px}
+.payment-desc{font-size:12px;color:var(--muted)}
+
+/* Payment Details Section */
+.payment-details{margin-top:16px;animation:slideDown 0.3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.payment-detail-section{margin-bottom:16px}
+.payment-detail-card{background:#f8f9fa;border:1px solid #e8eef0;border-radius:10px;padding:20px}
+.info-box{background:white;border-left:4px solid var(--accent);padding:12px;border-radius:6px;font-size:13px;margin-top:12px}
+.info-box ol{font-size:13px;line-height:1.6}
+.info-box strong{color:var(--accent)}
+
 /* Table */
 .table{width:100%;border-collapse:collapse;margin-top:12px}
-.table th,.table td{padding:10px;border-bottom:1px solid #f1f5f6;text-align:left}
-.table th{font-size:13px;color:var(--muted)}
+.table th,.table td{padding:12px;border-bottom:1px solid #f1f5f6;text-align:left}
+.table th{font-size:13px;color:var(--muted);font-weight:600;background:#f8f9fa}
+.table tr:hover{background:#f8f9fa}
 
 /* Footer */
-footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px;padding:20px}
+footer{margin-top:48px;text-align:center;color:var(--muted);font-size:13px;padding:20px}
 
 /* Utilities */
 .center{text-align:center}
 .right{margin-left:auto}
 .kicker{font-size:13px;color:var(--muted);font-weight:600}
 
-/* Modal */
-.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center;z-index:60}
-.modal{width:720px;max-width:96%;background:var(--card);border-radius:14px;padding:18px}
-.modal.show{display:flex}
-.note{font-size:13px;color:var(--muted)}
+/* Modal (summary) */
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:none;align-items:center;justify-content:center;z-index:60}
+.modal-backdrop.show{display:flex}
+.modal{width:720px;max-width:96%;background:var(--card);border-radius:14px;padding:24px;animation:modalSlideIn 0.3s;max-height:90vh;overflow-y:auto}
+@keyframes modalSlideIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
 
-/* Hamburger Menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  width: 28px;
-  height: 22px;
-  justify-content: space-between;
-  z-index:50;
+/* Tabs */
+.tabs{display:flex;gap:8px;background:white;padding:6px;border-radius:10px;box-shadow:var(--shadow);width:fit-content}
+.tab-btn{padding:10px 20px;border:none;background:transparent;border-radius:8px;cursor:pointer;font-weight:600;color:var(--muted);transition:all 0.2s;font-size:14px}
+.tab-btn.active{background:var(--accent);color:white}
+.tab-btn:hover:not(.active){background:#f8f9fa}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* Appointment Card */
+.appointment-card{background:white;border:1px solid #e8eef0;border-radius:10px;padding:16px;margin-bottom:12px;transition:all 0.2s}
+.appointment-card:hover{box-shadow:var(--shadow)}
+.appointment-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:10px}
+.appointment-details{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:12px}
+.detail-item{display:flex;flex-direction:column;gap:4px}
+.detail-label{font-size:12px;color:var(--muted);font-weight:600}
+.detail-value{font-size:14px;color:var(--text)}
+.appointment-actions{display:flex;gap:8px;justify-content:flex-end;padding-top:12px;border-top:1px solid #f1f5f6}
+
+/* Status Badge */
+.status-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;text-transform:uppercase}
+.status-pending{background:#fff3cd;color:#856404}
+.status-confirmed{background:#d4edda;color:#155724}
+.status-rejected{background:#f8d7da;color:#721c24}
+.status-completed{background:#d1ecf1;color:#0c5460}
+
+/* Empty State */
+.empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty-state-icon{font-size:48px;margin-bottom:16px;opacity:0.5}
+
+/* Small */
+.note{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* Loading */
+.loading-state{text-align:center;padding:40px;color:var(--muted);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+
+/* Responsive */
+@media (max-width:768px){
+  .appointment-details{grid-template-columns:1fr}
+  .appointment-header{flex-direction:column;align-items:flex-start}
+  .appointment-actions{flex-wrap:wrap}
+  .payment-options{grid-template-columns:1fr}
 }
 
-.hamburger div {
-  height: 3px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Hamburger animation */
-.hamburger.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active div:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile nav */
-@media (max-width:480px) {
-  .nav-links {
-    position: absolute;
-    top:70px;
-    right:0;
-    background: var(--card);
-    flex-direction: column;
-    width:200px;
-    padding:12px 0;
-    border-radius:10px;
-    box-shadow:var(--shadow);
-    display:none;
-  }
-  .nav-links.show {
-    display:flex;
-  }
-  .nav-links a {
-    padding:10px 16px;
-    width:100%;
-  }
-  .hamburger {
-    display:flex;
-    margin-left:auto;
-  }
+@media (max-width:480px){
   .logo{width:40px;height:40px;font-size:16px}
   .row{flex-direction:column}
+  .tabs{width:100%;justify-content:center}
+  .tab-btn{flex:1;text-align:center}
 }
