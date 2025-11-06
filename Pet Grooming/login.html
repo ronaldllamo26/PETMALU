@@ -7,29 +7,59 @@
   <link rel="stylesheet" href="auth.css">
 </head>
 <body>
-  <div class="centered">
+  <!-- Animated Background Decorations -->
+  <div class="bg-decoration">
+    <div class="paw-print">🐾</div>
+    <div class="paw-print">🐾</div>
+    <div class="paw-print">🐾</div>
+    <div class="paw-print">🐾</div>
+    <div class="paw-print">🐾</div>
+    <div class="paw-print">🐾</div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <div class="auth-container">
     <div class="auth-card">
-      <h2>Welcome back</h2>
-      <p class="small">Login to continue to booking</p>
+      <div class="card-header">
+        <div class="logo-circle">
+          <span class="logo-icon">🐶</span>
+        </div>
+        <h2>Welcome Back!</h2>
+        <p class="subtitle">Login to continue your pet grooming journey</p>
+      </div>
+
       <form id="login-form">
         <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" type="email" required>
+          <label for="email">
+            <span class="label-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+  <polyline points="3,5 12,13 21,5"></polyline>
+</svg>
+</span>
+            Email Address
+          </label>
+          <input id="email" type="email" placeholder="your@email.com" required>
         </div>
 
-        <div class="form-group password-group">
-          <label for="password">Password</label>
-          <div class="password-wrapper" style="position: relative;">
-            <input id="password" type="password" required>
+        <div class="form-group">
+          <label for="password">
+            <span class="label-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="11" width="18" height="10" rx="2" ry="2"></rect>
+  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+</svg>
+</span>
+            Password
+          </label>
+          <div class="password-wrapper">
+            <input id="password" type="password" placeholder="Enter your password" required>
             <span id="toggle-password" class="eye-icon">
-              <!-- Eye closed / slashed icon -->
-              <svg id="eye-closed" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.94 17.94A10.97 10.97 0 0 1 12 20c-7 0-11-8-11-8a18.1 18.1 0 0 1 5.06-5.94"></path>
+              <svg id="eye-closed" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.97 10.97 0 0 1 12 20c-7 0-11-8-11-8a18.1 18.1 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path>
                 <line x1="1" y1="1" x2="23" y2="23"></line>
               </svg>
-
-              <!-- Eye open icon -->
-              <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
@@ -37,11 +67,42 @@
           </div>
         </div>
 
-        <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:12px;">
-          <button class="btn btn-primary" type="submit">Login</button>
-          <a class="link" href="register.html">Register</a>
+        <button class="btn btn-primary" type="submit">
+          <span>Login</span>
+          <span class="btn-icon">→</span>
+        </button>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+        <div class="bottom-link">
+          <p>Don't have an account? <a href="register.html" class="link">Register Now</a></p>
         </div>
       </form>
+    </div>
+
+    <!-- Decorative Side Panel -->
+    <div class="side-panel">
+      <div class="side-content">
+        <div class="feature-icon">✨</div>
+        <h3>Professional Pet Grooming</h3>
+        <p>Book appointments with certified pet groomers and give your furry friends the care they deserve!</p>
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="check-icon">✓</span>
+            <span>Easy Online Booking</span>
+          </div>
+          <div class="feature-item">
+            <span class="check-icon">✓</span>
+            <span>Certified Groomers</span>
+          </div>
+          <div class="feature-item">
+            <span class="check-icon">✓</span>
+            <span>Affordable Rates</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
