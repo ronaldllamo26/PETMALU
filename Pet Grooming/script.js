@@ -132,7 +132,7 @@ function validateBookingDateTime(dateVal, timeVal) {
   return true;
 }
 
-// Booking summary modal
+// Show summary modal
 function showSummaryModal(data){
   let backdrop = document.querySelector('.modal-backdrop');
   if(!backdrop){
@@ -158,6 +158,7 @@ function showSummaryModal(data){
       <div><strong>Service:</strong> ${data.serviceName}</div>
       <div><strong>Date & Time:</strong> ${data.date} ${data.time}</div>
       <div><strong>Payment:</strong> ${data.paymentMethod}</div>
+      ${data.paymentDetails ? `<div><strong>Details:</strong> ${data.paymentDetails}</div>` : ''}
       <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
         <button id="confirm-book" class="btn btn-primary">Confirm Booking</button>
         <button id="cancel-book" class="btn btn-outline">Cancel</button>
@@ -165,10 +166,10 @@ function showSummaryModal(data){
     </div>
   `;
   backdrop.appendChild(modal);
-  backdrop.classList.add('show');
+  backdrop.style.display = 'flex';
 
-  $('#close-summary').onclick = () => backdrop.classList.remove('show');
-  $('#cancel-book').onclick = () => backdrop.classList.remove('show');
+  $('#close-summary').onclick = () => backdrop.style.display = 'none';
+  $('#cancel-book').onclick = () => backdrop.style.display = 'none';
   $('#confirm-book').onclick = () => {
     const appts = JSON.parse(localStorage.getItem('pg_appointments')||'[]');
     const booking = { 
@@ -188,9 +189,7 @@ function showSummaryModal(data){
         <p class="small">Redirecting to confirmation page...</p>
       </div>
     `;
-    setTimeout(() => {
-      window.location.href = 'success.html';
-    }, 2000);
+    setTimeout(() => window.location.href='success.html', 2000);
   };
 }
 
@@ -198,6 +197,46 @@ function showSummaryModal(data){
 function attachBookingHandler(){
   const btn = $('#btn-submit');
   if(!btn) return;
+
+  const form = $('#booking-form');
+  const paymentRadios = $$('input[name="payment"]');
+
+  // Create container for payment extra fields
+  const paymentContainer = document.createElement('div');
+  paymentContainer.id = 'payment-extra';
+  paymentContainer.style.marginTop = '8px';
+  form.appendChild(paymentContainer);
+
+  // Handle payment option change
+  paymentRadios.forEach(radio=>{
+    radio.addEventListener('change', ()=>{
+      const val = radio.value;
+      paymentContainer.innerHTML = '';
+      if(val === 'GCash'){
+        paymentContainer.innerHTML = `
+          <label>GCash Number</label>
+          <input type="text" id="gcash-number" placeholder="e.g. 09123456789" required>
+        `;
+      } else if(val === 'Card'){
+        paymentContainer.innerHTML = `
+          <label>Card Number</label>
+          <input type="text" id="card-number" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+          <div class="row" style="margin-top:6px">
+            <div class="col">
+              <label>Expiry (MM/YY)</label>
+              <input type="text" id="card-expiry" placeholder="MM/YY" required>
+            </div>
+            <div class="col">
+              <label>CVV</label>
+              <input type="text" id="card-cvv" placeholder="123" required>
+            </div>
+          </div>
+        `;
+      }
+    });
+  });
+
+  // Form submission
   btn.addEventListener('click', ()=>{
     const ownerName = $('#ownerName').value.trim();
     const ownerEmail = $('#ownerEmail').value.trim();
@@ -221,6 +260,19 @@ function attachBookingHandler(){
 
     if (!validateBookingDateTime(date, time)) return;
 
+    let paymentDetails = '';
+    if(payment.value === 'GCash'){
+      const gcash = $('#gcash-number').value.trim();
+      if(!gcash){ alert('⚠️ Please enter your GCash number.'); return; }
+      paymentDetails = gcash;
+    } else if(payment.value === 'Card'){
+      const cardNum = $('#card-number').value.trim();
+      const expiry = $('#card-expiry').value.trim();
+      const cvv = $('#card-cvv').value.trim();
+      if(!cardNum || !expiry || !cvv){ alert('⚠️ Please fill all card details.'); return; }
+      paymentDetails = `Card: ${cardNum}, Expiry: ${expiry}, CVV: ${cvv}`;
+    }
+
     const services = JSON.parse(localStorage.getItem('pg_services')||'[]');
     const svc = services.find(s=>s.id===serviceId) || {name:'Service'};
 
@@ -234,6 +286,7 @@ function attachBookingHandler(){
       date, 
       time, 
       paymentMethod:payment.value, 
+      paymentDetails,
       notes 
     };
     showSummaryModal(data);
@@ -242,17 +295,6 @@ function attachBookingHandler(){
 
 // DOM Ready
 document.addEventListener('DOMContentLoaded', ()=>{
-  // Hamburger toggle
-  const hamburger = $('#hamburger');
-  if(hamburger){
-    hamburger.addEventListener('click', ()=>{
-      const nav = $('.nav-links');
-      if(nav) nav.classList.toggle('show');
-      hamburger.classList.toggle('active'); // animate to X
-    });
-  }
-
-  // Initialize existing functions
   seedServices();
   updateNavbar();
   protectBookingPage();
