@@ -25,20 +25,16 @@ a{color:inherit;text-decoration:none}
 .nav-links a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600}
 .nav-links a.active{color:var(--accent);background:rgba(102,191,191,0.08)}
 
+/* Hero & Cards */
 .hero-card{background:var(--card);padding:28px;border-radius:14px;box-shadow:var(--shadow)}
 .hero h1{margin:0 0 10px;font-size:28px}
 .hero p{color:var(--muted);margin:0 0 18px}
-
-/* Button */
 .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
 .btn-primary{background:var(--accent);color:white}
 .btn-outline{background:transparent;border:1px solid #e6edf3;color:var(--text)}
-
-/* Cards & grid */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
 @media (max-width:920px){.grid-3{grid-template-columns:1fr}}
 .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
-
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:920px){.services-grid{grid-template-columns:1fr}}
 .service{padding:14px;border-radius:10px;border:1px solid #eef6f6}
@@ -66,16 +62,66 @@ footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px;paddi
 .right{margin-left:auto}
 .kicker{font-size:13px;color:var(--muted);font-weight:600}
 
-/* Modal (summary) */
+/* Modal */
 .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:none;align-items:center;justify-content:center;z-index:60}
 .modal{width:720px;max-width:96%;background:var(--card);border-radius:14px;padding:18px}
 .modal.show{display:flex}
-
-/* Small */
 .note{font-size:13px;color:var(--muted)}
 
-/* Responsive */
-@media (max-width:480px){
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 28px;
+  height: 22px;
+  justify-content: space-between;
+  z-index:50;
+}
+
+.hamburger div {
+  height: 3px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation */
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile nav */
+@media (max-width:480px) {
+  .nav-links {
+    position: absolute;
+    top:70px;
+    right:0;
+    background: var(--card);
+    flex-direction: column;
+    width:200px;
+    padding:12px 0;
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    display:none;
+  }
+  .nav-links.show {
+    display:flex;
+  }
+  .nav-links a {
+    padding:10px 16px;
+    width:100%;
+  }
+  .hamburger {
+    display:flex;
+    margin-left:auto;
+  }
   .logo{width:40px;height:40px;font-size:16px}
   .row{flex-direction:column}
 }
