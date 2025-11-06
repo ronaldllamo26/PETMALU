@@ -8,97 +8,259 @@
 </head>
 <body>
   <header class="navbar">
-  <div class="container" style="display:flex;align-items:center;gap:20px;padding:0">
-    <div class="brand">
-      <div class="logo">
-        <img src="Dogstyle.png" alt="PetMalu Logo" style="height:48px; width:auto;">
+    <div class="container" style="display:flex;align-items:center;gap:20px;padding:0">
+      <div class="brand">
+        <div class="logo">
+          <img src="Dogstyle.png" alt="PetMalu Logo" style="height:48px; width:auto;">
+        </div>
+        <div>
+          <div style="font-weight:700">PetMalu</div>
+        </div>
       </div>
-      <div>
-        <div style="font-weight:700">PetMalu</div>
-      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="booking.html" class="active">Book Now</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+      </nav>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="booking.html" class="active">Book Now</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-    </nav>
-  </div>
-</header>
-
+  </header>
 
   <main class="container">
-    <div class="card" style="max-width:900px;margin:18px auto">
-      <h2 style="margin:0 0 8px">Book an Appointment</h2>
-      <p class="small">You must be logged in to make a booking.</p>
+    <!-- Tab Navigation -->
+    <div class="tabs" style="margin-bottom:20px">
+      <button class="tab-btn active" data-tab="booking">New Booking</button>
+      <button class="tab-btn" data-tab="appointments">My Appointments</button>
+    </div>
 
-      <form id="booking-form" style="margin-top:12px">
-        <div style="display:flex;gap:16px;flex-direction:column">
-          <div class="form-group">
-            <label for="ownerName">Owner Full Name</label>
-            <input id="ownerName" type="text" placeholder="e.g. Jessabel Ronato" required>
+    <!-- NEW BOOKING TAB -->
+    <div class="tab-content active" id="tab-booking">
+      <div class="card" style="max-width:900px;margin:0 auto">
+        <h2 style="margin:0 0 8px">Book an Appointment</h2>
+        <p class="small">Fill in the details below to schedule your pet's grooming session.</p>
+
+        <form id="booking-form" style="margin-top:20px">
+          <div style="display:flex;gap:16px;flex-direction:column">
+            <!-- Owner Information -->
+            <div class="section-header" style="margin-top:8px">
+              <h3 style="font-size:16px;font-weight:700;margin:0 0 4px">Owner Information</h3>
+              <div class="small">Your contact details</div>
+            </div>
+
+            <div class="form-group">
+              <label for="ownerName">Full Name *</label>
+              <input id="ownerName" type="text" placeholder="e.g. Maria Cruz" required>
+            </div>
+
+            <div class="row">
+              <div class="col form-group">
+                <label for="ownerEmail">Email *</label>
+                <input id="ownerEmail" type="email" placeholder="you@example.com" required>
+              </div>
+              <div class="col form-group">
+                <label for="ownerPhone">Phone Number *</label>
+                <input id="ownerPhone" type="tel" placeholder="09XX XXX XXXX" required>
+              </div>
+            </div>
+
+            <!-- Pet Information -->
+            <div class="section-header" style="margin-top:8px">
+              <h3 style="font-size:16px;font-weight:700;margin:0 0 4px">Pet Information</h3>
+              <div class="small">Tell us about your pet</div>
+            </div>
+
+            <div class="row">
+              <div class="col form-group">
+                <label for="petName">Pet Name *</label>
+                <input id="petName" type="text" placeholder="e.g. Buster" required>
+              </div>
+              <div class="col form-group">
+                <label for="petType">Pet Type *</label>
+                <select id="petType">
+                  <option>Dog</option>
+                  <option>Cat</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Service & Schedule -->
+            <div class="section-header" style="margin-top:8px">
+              <h3 style="font-size:16px;font-weight:700;margin:0 0 4px">Service & Schedule</h3>
+              <div class="small">Choose your preferred service and time</div>
+            </div>
+
+            <div class="row">
+              <div class="col form-group">
+                <label for="service">Service *</label>
+                <select id="service"></select>
+              </div>
+              <div class="col form-group">
+                <label for="date">Preferred Date *</label>
+                <input id="date" type="date" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col form-group">
+                <label for="time">Preferred Time *</label>
+                <input id="time" type="time" required>
+              </div>
+              <div class="col form-group">
+                <label for="notes">Notes (optional)</label>
+                <input id="notes" type="text" placeholder="Allergies, behavior notes, etc.">
+              </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="section-header" style="margin-top:16px">
+              <h3 style="font-size:16px;font-weight:700;margin:0 0 4px">Payment Method</h3>
+              <div class="small">Choose how you'd like to pay</div>
+            </div>
+
+            <div class="form-group">
+              <div class="payment-options">
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="Cash">
+                  <div class="payment-card">
+                    <div class="payment-icon"><!-- Minimalist Peso Coin Icon (Larger Version) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Peso coin icon">
+  <circle cx="16" cy="16" r="12" fill="none" stroke="#000" stroke-width="2"/>
+  <text x="16" y="16.4" font-family="Segoe UI, Roboto, Arial" font-size="12" fill="#000" text-anchor="middle" dominant-baseline="middle">₱</text>
+</svg>
+</div>
+                    <div class="payment-info">
+                      <div class="payment-title">Cash on Site</div>
+                      <div class="payment-desc">Pay when you arrive</div>
+                    </div>
+                  </div>
+                </label>
+
+                 <label class="payment-option"> 
+                  <input type="radio" name="payment" value="GCash">
+                  <div class="payment-card">
+                    <div class="payment-icon">
+                      <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#007DFF"/>
+                        <text x="50" y="68" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="white" text-anchor="middle">G</text>
+                      </svg>
+                    </div>
+                    <div class="payment-info">
+                      <div class="payment-title">GCash</div>
+                      <div class="payment-desc">Pay via GCash mobile app</div>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="payment-option">
+                  <input type="radio" name="payment" value="Card">
+                  <div class="payment-card">
+                    <div class="payment-icon"><!-- Minimalist Credit Card Icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Credit card icon">
+  <!-- Outer card -->
+  <rect x="4" y="8" width="24" height="16" rx="2.5" fill="none" stroke="#000" stroke-width="2"/>
+  <!-- Magnetic stripe -->
+  <rect x="4" y="11" width="24" height="3" fill="#000"/>
+  <!-- Chip / details -->
+  <rect x="8" y="17" width="6" height="4" rx="0.5" fill="none" stroke="#000" stroke-width="1.5"/>
+  <line x1="17" y1="19" x2="25" y2="19" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+</div>
+                    <div class="payment-info">
+                      <div class="payment-title">Credit/Debit Card</div>
+                      <div class="payment-desc">Secure card payment</div>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Payment Details Section (Hidden by default) -->
+            <div id="payment-details" class="payment-details" style="display:none">
+              <!-- GCash Details -->
+              <div id="gcash-details" class="payment-detail-section" style="display:none">
+                <div class="payment-detail-card">
+                  <h4 style="margin:0 0 12px;font-size:15px;font-weight:700">GCash Payment Details</h4>
+                  <div class="form-group">
+                    <label for="gcashNumber">GCash Mobile Number *</label>
+                    <input id="gcashNumber" type="tel" placeholder="09XX XXX XXXX" maxlength="11">
+                    <div class="note">Enter your 11-digit GCash registered number</div>
+                  </div>
+                  <div class="form-group">
+                    <label for="gcashName">Account Name *</label>
+                    <input id="gcashName" type="text" placeholder="Full name as registered in GCash">
+                  </div>
+                  <div class="info-box">
+                    <strong>📱 How to pay:</strong>
+                    <ol style="margin:8px 0 0 20px;padding:0">
+                      <li>Submit booking to get our GCash merchant number</li>
+                      <li>Send payment via GCash app</li>
+                      <li>Keep your reference number</li>
+                      <li>Upload receipt proof (optional but recommended)</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Details -->
+              <div id="card-details" class="payment-detail-section" style="display:none">
+                <div class="payment-detail-card">
+                  <h4 style="margin:0 0 12px;font-size:15px;font-weight:700">Card Payment Details</h4>
+                  <div class="form-group">
+                    <label for="cardNumber">Card Number *</label>
+                    <input id="cardNumber" type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+                  </div>
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="cardExpiry">Expiry Date *</label>
+                      <input id="cardExpiry" type="text" placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="col form-group">
+                      <label for="cardCVV">CVV *</label>
+                      <input id="cardCVV" type="text" placeholder="123" maxlength="3">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="cardName">Cardholder Name *</label>
+                    <input id="cardName" type="text" placeholder="Name as it appears on card">
+                  </div>
+                  <div class="info-box">
+                    <strong>🔒 Secure Payment:</strong> Your card details are encrypted and secure. We accept Visa, Mastercard, and JCB.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:16px;flex-wrap:wrap">
+              <div class="small">By submitting you agree to our terms & conditions.</div>
+              <div style="display:flex;gap:10px">
+                <button type="button" id="btn-submit" class="btn btn-primary">Review & Confirm</button>
+                <a href="index.html" class="btn btn-outline">Cancel</a>
+              </div>
+            </div>
           </div>
+        </form>
+      </div>
+    </div>
 
-          <div class="form-group">
-            <label for="ownerEmail">Email</label>
-            <input id="ownerEmail" type="email" placeholder="you@example.com" required>
+    <!-- MY APPOINTMENTS TAB -->
+    <div class="tab-content" id="tab-appointments">
+      <div class="card" style="max-width:1000px;margin:0 auto">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+          <div>
+            <h2 style="margin:0 0 4px">My Appointments</h2>
+            <p class="small">Track your booking status and history</p>
           </div>
+          <button id="refresh-appointments" class="btn btn-outline" style="font-size:13px">
+            🔄 Refresh
+          </button>
+        </div>
 
-          <div class="row">
-            <div class="col form-group">
-              <label for="petName">Pet Name</label>
-              <input id="petName" type="text" placeholder="e.g. Buster" required>
-            </div>
-            <div class="col form-group">
-              <label for="petType">Pet Type</label>
-              <select id="petType">
-                <option>Dog</option>
-                <option>Cat</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col form-group">
-              <label for="service">Service</label>
-              <select id="service"></select>
-            </div>
-            <div class="col form-group">
-              <label for="date">Preferred Date</label>
-              <input id="date" type="date" required>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col form-group">
-              <label for="time">Preferred Time</label>
-              <input id="time" type="time" required>
-            </div>
-            <div class="col form-group">
-              <label for="notes">Notes (optional)</label>
-              <input id="notes" type="text" placeholder="Allergies, behavior notes, etc.">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Payment Method</label>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <label><input type="radio" name="payment" value="Cash"> Cash on Site</label>
-              <label><input type="radio" name="payment" value="GCash"> GCash</label>
-              <label><input type="radio" name="payment" value="Card"> Credit / Debit Card</label>
-            </div>
-            <div class="note">Card option is a placeholder for later integration.</div>
-          </div>
-
-          <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:8px">
-            <div class="small">By submitting you agree to our terms & conditions.</div>
-            <div>
-              <button type="button" id="btn-submit" class="btn btn-primary">Review & Confirm</button>
-              <a href="index.html" class="btn btn-outline">Cancel</a>
-            </div>
+        <div id="appointments-list">
+          <div class="loading-state" style="text-align:center;padding:40px;color:var(--muted)">
+            Loading appointments...
           </div>
         </div>
-      </form>
+      </div>
     </div>
 
     <footer>
@@ -106,7 +268,8 @@
     </footer>
   </main>
 
-  <div class="modal-backdrop" id="summary-modal" style="display:none"></div>
+  <!-- Modal Backdrop -->
+  <div class="modal-backdrop" id="summary-modal"></div>
 
   <script src="script.js"></script>
 </body>
