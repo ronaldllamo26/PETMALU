@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Book Appointment — PetMalu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container" style="display:flex;align-items:center;gap:20px;padding:0">
+      <div class="brand">
+        <div class="logo">PM</div>
+        <div>
+          <div style="font-weight:700">PetMalu</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="booking.html" class="active">Book Now</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card" style="max-width:900px;margin:18px auto">
+      <h2 style="margin:0 0 8px">Book an Appointment</h2>
+      <p class="small">You must be logged in to make a booking.</p>
+
+      <form id="booking-form" style="margin-top:12px">
+        <div style="display:flex;gap:16px;flex-direction:column">
+          <div class="form-group">
+            <label for="ownerName">Owner Full Name</label>
+            <input id="ownerName" type="text" placeholder="e.g. Maria Cruz" required>
+          </div>
+
+          <div class="form-group">
+            <label for="ownerEmail">Email</label>
+            <input id="ownerEmail" type="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="row">
+            <div class="col form-group">
+              <label for="petName">Pet Name</label>
+              <input id="petName" type="text" placeholder="e.g. Buster" required>
+            </div>
+            <div class="col form-group">
+              <label for="petType">Pet Type</label>
+              <select id="petType">
+                <option>Dog</option>
+                <option>Cat</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col form-group">
+              <label for="service">Service</label>
+              <select id="service"></select>
+            </div>
+            <div class="col form-group">
+              <label for="date">Preferred Date</label>
+              <input id="date" type="date" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col form-group">
+              <label for="time">Preferred Time</label>
+              <input id="time" type="time" required>
+            </div>
+            <div class="col form-group">
+              <label for="notes">Notes (optional)</label>
+              <input id="notes" type="text" placeholder="Allergies, behavior notes, etc.">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Payment Method</label>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <label><input type="radio" name="payment" value="Cash"> Cash on Site</label>
+              <label><input type="radio" name="payment" value="GCash"> GCash</label>
+              <label><input type="radio" name="payment" value="Card"> Credit / Debit Card</label>
+            </div>
+            <div class="note">Card option is a placeholder for later integration.</div>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:8px">
+            <div class="small">By submitting you agree to our terms & conditions.</div>
+            <div>
+              <button type="button" id="btn-submit" class="btn btn-primary">Review & Confirm</button>
+              <a href="index.html" class="btn btn-outline">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      <div class="small">No payment required on request. Confirmation will be sent by email (demo).</div>
+    </footer>
+  </main>
+
+  <div class="modal-backdrop" id="summary-modal" style="display:none"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

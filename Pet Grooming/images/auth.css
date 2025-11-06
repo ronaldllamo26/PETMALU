@@ -1,0 +1,24 @@
+/* auth.css - styles for login/register pages */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --accent: #66BFBF;
+  --muted: #6b7280;
+  --text: #222222;
+  --shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text)}
+.centered{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-card{width:100%;max-width:420px;background:var(--card);padding:24px;border-radius:12px;box-shadow:var(--shadow)}
+.auth-card h2{margin:0 0 8px}
+.form-group{margin-bottom:12px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+input[type=text],input[type=email],input[type=password]{width:100%;padding:10px;border-radius:8px;border:1px solid #e8eef0;background:transparent;font-size:14px}
+.small{font-size:13px;color:var(--muted)}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn-primary{background:var(--accent);color:white}
+.link{color:var(--accent);font-weight:700}
