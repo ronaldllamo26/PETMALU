@@ -541,8 +541,7 @@ function loadAppointments(){
   if(userAppts.length === 0){
     container.innerHTML = `
       <div class="empty-state">
-        <div class="empty-state-icon"><!-- Minimalist No Appointment Icon -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="No appointment icon">
+        <div class="empty-state-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="No appointment icon">
   <!-- Calendar outline -->
   <rect x="5" y="7" width="22" height="20" rx="2.5" fill="none" stroke="#000" stroke-width="2"/>
   <!-- Top bar -->
@@ -553,8 +552,7 @@ function loadAppointments(){
   <!-- X mark (no appointment) -->
   <line x1="11" y1="17" x2="21" y2="23" stroke="#000" stroke-width="2" stroke-linecap="round"/>
   <line x1="21" y1="17" x2="11" y2="23" stroke="#000" stroke-width="2" stroke-linecap="round"/>
-</svg>
-</div>
+</svg></div>
         <p style="margin-bottom:8px">No appointments yet</p>
         <p class="small">Book your first grooming session to get started!</p>
         <button class="btn btn-primary" style="margin-top:16px" onclick="document.querySelector('.tab-btn[data-tab=\\'booking\\']').click()">
