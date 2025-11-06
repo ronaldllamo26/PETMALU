@@ -7,26 +7,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="navbar">
-  <div class="container" style="display:flex;align-items:center;gap:20px;padding:0">
-    <div class="brand">
-      <div class="logo">
-        <img src="Dogstyle.png" alt="PetMalu Logo" style="height:48px; width:auto;">
+ 
+ <header class="navbar">
+    <div class="container" style="display:flex;align-items:center;gap:20px;padding:0">
+      <div class="brand">
+        <div class="logo">
+          <img src="Dogstyle.png" alt="PetMalu Logo" style="height:48px; width:auto;">
+        </div>
+        <div>
+          <div style="font-weight:700">PetMalu</div>
+        </div>
       </div>
-      <div>
-        <div style="font-weight:700">PetMalu</div>
-      </div>
+
+      <!-- ✅ Hamburger Button -->
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+
+      <!-- ✅ Navigation Links -->
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="booking.html">Book Now</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="about.html">About</a>
+      </nav>
     </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="booking.html">Book Now</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="about.html">About</a>
-    </nav>
-  </div>
-</header>
-
-
+  </header>
+  
   <main class="container">
     <div style="max-width:1000px;margin:18px auto">
       <h2 style="margin-bottom:6px">Our Grooming Services</h2>
