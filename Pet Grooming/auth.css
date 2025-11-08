@@ -86,12 +86,11 @@ body {
   to { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
 }
 
-/* ===== AUTH CONTAINER - PERFECT HEIGHT FOR BOTH ===== */
+/* ===== AUTH CONTAINER ===== */
 .auth-container {
   display: flex;
-  max-width: 900px;
+  max-width: 900px; /* same for login and register */
   width: 100%;
-  height: 560px; /* Perfect height for both forms */
   background: var(--white);
   border-radius: 24px;
   box-shadow: var(--shadow-lg);
@@ -100,14 +99,14 @@ body {
   position: relative;
 }
 
-/* ===== AUTH CARD - OPTIMIZED FOR NO SCROLL ===== */
+/* ===== AUTH CARD ===== */
 .auth-card {
   flex: 1;
-  padding: 40px 35px;
+  padding: 40px 35px; /* same for login and register */
   display: flex;
   flex-direction: column;
+  justify-content: center;
   animation: slideInLeft 0.6s ease-out;
-  overflow: hidden; /* No scroll */
 }
 
 @keyframes slideInLeft {
@@ -117,7 +116,7 @@ body {
 
 .card-header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .logo-circle {
@@ -153,44 +152,8 @@ body {
   font-weight: 400;
 }
 
-/* ===== FORM STYLES - COMPACT FOR REGISTER ===== */
-.form-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.form-content {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 5px;
-  margin-bottom: 15px;
-}
-
-.form-content::-webkit-scrollbar {
-  width: 4px;
-}
-
-.form-content::-webkit-scrollbar-thumb {
-  background: var(--primary-light);
-  border-radius: 10px;
-}
-
-.form-group { 
-  margin-bottom: 16px; /* Reduced spacing */
-}
-
-.form-row {
-  display: flex;
-  gap: 12px; /* Reduced gap */
-  margin-bottom: 16px; /* Reduced spacing */
-}
-
-.form-row .form-group {
-  flex: 1;
-  margin-bottom: 0;
-}
+/* ===== FORM STYLES ===== */
+.form-group { margin-bottom: 20px; }
 
 label {
   display: flex;
@@ -199,7 +162,7 @@ label {
   font-size: 14px;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 6px; /* Reduced spacing */
+  margin-bottom: 8px;
 }
 
 .label-icon { font-size: 16px; }
@@ -208,10 +171,10 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   width: 100%;
-  padding: 11px 14px; /* Slightly reduced padding */
+  padding: 12px 14px;
   border: 2px solid #e1e8ed;
   border-radius: 10px;
-  font-size: 14px; /* Slightly smaller font */
+  font-size: 15px;
   font-family: 'Poppins', sans-serif;
   transition: all 0.3s ease;
   background: #f8fafc;
@@ -247,7 +210,7 @@ input::placeholder { color: #94a3b8; }
 /* ===== BUTTON ===== */
 .btn {
   width: 100%;
-  padding: 13px 22px; /* Slightly reduced padding */
+  padding: 14px 22px;
   border: none;
   border-radius: 10px;
   font-size: 15px;
@@ -281,7 +244,7 @@ input::placeholder { color: #94a3b8; }
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 20px 0 15px; /* Reduced spacing */
+  margin: 25px 0 20px;
   color: var(--muted);
   font-size: 13px;
 }
@@ -299,11 +262,7 @@ input::placeholder { color: #94a3b8; }
 }
 
 /* ===== BOTTOM LINK ===== */
-.bottom-link { 
-  text-align: center; 
-  padding-top: 15px;
-  margin-top: auto; /* Push to bottom */
-}
+.bottom-link { text-align: center; }
 
 .bottom-link p {
   font-size: 13px;
@@ -322,7 +281,7 @@ input::placeholder { color: #94a3b8; }
   text-decoration: underline;
 }
 
-/* ===== SIDE PANEL - SAME HEIGHT ===== */
+/* ===== SIDE PANEL ===== */
 .side-panel {
   flex: 1;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -457,27 +416,12 @@ input::placeholder { color: #94a3b8; }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 968px) {
   .side-panel { display: none; }
-  .auth-card { 
-    max-width: 500px; 
-    margin: 0 auto; 
-  }
-  .auth-container {
-    height: auto;
-    min-height: 560px;
-  }
+  .auth-card { max-width: 500px; margin: 0 auto; }
 }
 
 @media (max-width: 576px) {
   .auth-card { padding: 30px 25px; }
-  .auth-container { height: auto; }
   .card-header h2 { font-size: 24px; }
   .logo-circle { width: 60px; height: 60px; }
   .logo-icon { font-size: 32px; }
-  .form-row {
-    flex-direction: column;
-    gap: 0;
-  }
-  .form-group { 
-    margin-bottom: 14px;
-  }
 }
