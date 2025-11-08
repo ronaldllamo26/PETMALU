@@ -86,11 +86,12 @@ body {
   to { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
 }
 
-/* ===== AUTH CONTAINER ===== */
+/* ===== AUTH CONTAINER - SAME SIZE FOR BOTH ===== */
 .auth-container {
   display: flex;
-  max-width: 900px; /* same for login and register */
+  max-width: 900px; /* Same for both login and register */
   width: 100%;
+  height: 520px; /* Fixed height para same size */
   background: var(--white);
   border-radius: 24px;
   box-shadow: var(--shadow-lg);
@@ -99,14 +100,16 @@ body {
   position: relative;
 }
 
-/* ===== AUTH CARD ===== */
+/* ===== AUTH CARD - SAME PADDING AND DIMENSIONS ===== */
 .auth-card {
   flex: 1;
-  padding: 40px 35px; /* same for login and register */
+  padding: 40px 35px; /* Same padding for both */
   display: flex;
   flex-direction: column;
   justify-content: center;
   animation: slideInLeft 0.6s ease-out;
+  min-height: 520px; /* Same minimum height */
+  overflow-y: auto; /* Para sa scroll kung masyadong mahaba */
 }
 
 @keyframes slideInLeft {
@@ -153,7 +156,20 @@ body {
 }
 
 /* ===== FORM STYLES ===== */
-.form-group { margin-bottom: 20px; }
+.form-group { 
+  margin-bottom: 20px; 
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
 
 label {
   display: flex;
@@ -262,7 +278,11 @@ input::placeholder { color: #94a3b8; }
 }
 
 /* ===== BOTTOM LINK ===== */
-.bottom-link { text-align: center; }
+.bottom-link { 
+  text-align: center; 
+  margin-top: auto; /* Para laging nasa baba */
+  padding-top: 20px;
+}
 
 .bottom-link p {
   font-size: 13px;
@@ -281,11 +301,11 @@ input::placeholder { color: #94a3b8; }
   text-decoration: underline;
 }
 
-/* ===== SIDE PANEL ===== */
+/* ===== SIDE PANEL - SAME HEIGHT ===== */
 .side-panel {
   flex: 1;
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  padding: 40px 35px;
+  padding: 40px 35px; /* Same padding */
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -293,6 +313,7 @@ input::placeholder { color: #94a3b8; }
   position: relative;
   overflow: hidden;
   animation: slideInRight 0.6s ease-out;
+  min-height: 520px; /* Same height */
 }
 
 @keyframes slideInRight {
@@ -416,12 +437,25 @@ input::placeholder { color: #94a3b8; }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 968px) {
   .side-panel { display: none; }
-  .auth-card { max-width: 500px; margin: 0 auto; }
+  .auth-card { 
+    max-width: 500px; 
+    margin: 0 auto; 
+    min-height: auto;
+  }
+  .auth-container {
+    height: auto;
+    min-height: 520px;
+  }
 }
 
 @media (max-width: 576px) {
   .auth-card { padding: 30px 25px; }
+  .auth-container { height: auto; }
   .card-header h2 { font-size: 24px; }
   .logo-circle { width: 60px; height: 60px; }
   .logo-icon { font-size: 32px; }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
 }
