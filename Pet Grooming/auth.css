@@ -33,7 +33,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* ensure center alignment */
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
   padding: 10px;
@@ -86,10 +86,10 @@ body {
   to { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
 }
 
-/* ===== AUTH CONTAINER (resized like first login layout) ===== */
+/* ===== AUTH CONTAINER ===== */
 .auth-container {
   display: flex;
-  max-width: 900px; /* smaller and more compact */
+  max-width: 900px; /* same for login and register */
   width: 100%;
   background: var(--white);
   border-radius: 24px;
@@ -102,7 +102,7 @@ body {
 /* ===== AUTH CARD ===== */
 .auth-card {
   flex: 1;
-  padding: 40px 35px; /* reduced padding */
+  padding: 40px 35px; /* same for login and register */
   display: flex;
   flex-direction: column;
   justify-content: center;
